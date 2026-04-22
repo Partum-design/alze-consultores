@@ -840,8 +840,8 @@ body.menu-open::before {
 
 .service-grid-main {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
 }
 
 .services-line-layout {
@@ -1352,6 +1352,22 @@ body.menu-open::before {
     box-shadow: 0 18px 42px rgba(3,26,43,0.08);
     position: relative;
     overflow: hidden;
+}
+
+.service-detail-card#servicio-extintores {
+    background: linear-gradient(145deg, #ffffff, #f9fbfd);
+}
+
+.service-detail-card#servicio-extintores::before {
+    background: linear-gradient(180deg, #a68256, #d0b08a);
+}
+
+.service-detail-card#servicio-electricos {
+    background: linear-gradient(145deg, #ffffff, #f6f9fc);
+}
+
+.service-detail-card#servicio-electricos::before {
+    background: linear-gradient(180deg, #0d5e8c, #2f8fc3);
 }
 
 .service-detail-card::before {
@@ -2378,6 +2394,7 @@ body.menu-open::before {
     .scroll-hint { display: none; }
     .why-grid { grid-template-columns: 1fr; gap: 40px; }
     .why-image img { height: 350px; }
+    .service-grid-main { grid-template-columns: repeat(2, 1fr); }
     .contact-container { grid-template-columns: 1fr; }
     .contact-info-panel { padding: 40px; }
     .contact-form-panel { padding: 40px; }

@@ -1477,6 +1477,17 @@ body.menu-open::before {
     background: var(--white);
     box-shadow: 0 10px 24px rgba(3,26,43,0.06);
     overflow: hidden;
+    transition: border-color 0.28s ease, box-shadow 0.28s ease;
+}
+
+.faq-item:hover {
+    border-color: rgba(166,130,86,0.38);
+    box-shadow: 0 14px 26px rgba(3,26,43,0.1);
+}
+
+.faq-item[open] {
+    border-color: rgba(166,130,86,0.45);
+    box-shadow: 0 16px 32px rgba(3,26,43,0.12);
 }
 
 .faq-item summary {
@@ -1487,6 +1498,21 @@ body.menu-open::before {
     color: var(--primary);
     position: relative;
     padding-right: 44px;
+    background: rgba(5,41,64,0.01);
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.faq-item summary:hover {
+    background: rgba(5,41,64,0.04);
+}
+
+.faq-item summary:focus-visible {
+    outline: 2px solid rgba(166,130,86,0.6);
+    outline-offset: -2px;
+}
+
+.faq-item[open] summary {
+    color: var(--primary-dark);
 }
 
 .faq-item summary::-webkit-details-marker {
@@ -1501,17 +1527,39 @@ body.menu-open::before {
     transform: translateY(-50%);
     font-size: 1.2rem;
     color: var(--accent);
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .faq-item[open] summary::after {
     content: '−';
+    transform: translateY(-50%) rotate(180deg);
+    color: var(--primary);
 }
 
 .faq-item p {
     margin: 0;
-    padding: 0 18px 16px;
+    padding: 0 18px;
     color: var(--text-muted);
     line-height: 1.75;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, opacity 0.3s ease, padding 0.3s ease;
+}
+
+.faq-item[open] p {
+    max-height: 360px;
+    opacity: 1;
+    padding: 0 18px 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .faq-item,
+    .faq-item summary,
+    .faq-item summary::after,
+    .faq-item p {
+        transition: none;
+    }
 }
 
 .faq-whatsapp {

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/servicios.html",
+      "destination": "/servicios",
+      "permanent": true
+    },
+    {
+      "source": "/contacto.html",
+      "destination": "/contacto",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/servicios",
+      "destination": "/servicios.html"
+    },
+    {
+      "source": "/contacto",
+      "destination": "/contacto.html"
+    }
+  ]
+}

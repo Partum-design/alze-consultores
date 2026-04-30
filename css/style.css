@@ -840,7 +840,7 @@ body.menu-open::before {
 
 .service-grid-main {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
 }
 
@@ -1444,6 +1444,14 @@ body.menu-open::before {
 
 .service-detail-card#servicio-electricos::before {
     background: linear-gradient(180deg, #0d5e8c, #2f8fc3);
+}
+
+.service-detail-card#servicio-soldadura {
+    background: linear-gradient(145deg, #ffffff, #fbf7f4);
+}
+
+.service-detail-card#servicio-soldadura::before {
+    background: linear-gradient(180deg, #9a5c2a, #d48a4a);
 }
 
 .service-detail-card::before {

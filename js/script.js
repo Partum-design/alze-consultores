@@ -396,6 +396,71 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // === HOME GALLERY LIGHTBOX ===
+    const galleryShots = Array.from(document.querySelectorAll('.work-gallery-grid .work-shot img'));
+    if (galleryShots.length > 0) {
+        const lightbox = document.createElement('div');
+        lightbox.className = 'gallery-lightbox';
+        lightbox.setAttribute('aria-hidden', 'true');
+        lightbox.innerHTML = `
+            <div class="gallery-lightbox-dialog" role="dialog" aria-modal="true" aria-label="Vista ampliada de imagen">
+                <button class="gallery-lightbox-close" type="button" aria-label="Cerrar imagen">
+                    <i class="fas fa-times"></i>
+                </button>
+                <img class="gallery-lightbox-img" alt="">
+            </div>
+        `;
+        document.body.appendChild(lightbox);
+
+        const lightboxImg = lightbox.querySelector('.gallery-lightbox-img');
+        const closeBtn = lightbox.querySelector('.gallery-lightbox-close');
+        const dialog = lightbox.querySelector('.gallery-lightbox-dialog');
+
+        const openLightbox = (src, alt) => {
+            if (!lightboxImg) return;
+            lightboxImg.src = src;
+            lightboxImg.alt = alt || 'Imagen ampliada';
+            lightbox.classList.add('open');
+            lightbox.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('menu-open');
+        };
+
+        const closeLightbox = () => {
+            lightbox.classList.remove('open');
+            lightbox.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('menu-open');
+            if (lightboxImg) {
+                lightboxImg.removeAttribute('src');
+            }
+        };
+
+        galleryShots.forEach((img) => {
+            img.addEventListener('click', () => openLightbox(img.currentSrc || img.src, img.alt));
+        });
+
+        if (closeBtn) {
+            closeBtn.addEventListener('click', closeLightbox);
+        }
+
+        lightbox.addEventListener('click', (event) => {
+            if (event.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        if (dialog) {
+            dialog.addEventListener('click', (event) => {
+                event.stopPropagation();
+            });
+        }
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && lightbox.classList.contains('open')) {
+                closeLightbox();
+            }
+        });
+    }
+
     // === Recalculate lightweight effects on resize ===
     window.addEventListener('resize', requestTick, { passive: true });
 });

@@ -932,7 +932,7 @@ body.menu-open::before {
     position: relative;
     overflow: hidden;
     border-radius: var(--radius-lg);
-    aspect-ratio: 16/10;
+    aspect-ratio: 16/11;
     cursor: pointer;
     box-shadow: var(--shadow-md);
 }
@@ -951,9 +951,10 @@ body.menu-open::before {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 40px;
+    padding: 26px;
     color: var(--white);
     transition: var(--transition);
+    gap: 8px;
 }
 
 .service-card-new:hover img {
@@ -973,8 +974,11 @@ body.menu-open::before {
     align-items: center;
     justify-content: center;
     font-size: 1.3rem;
-    margin-bottom: 15px;
+    margin-bottom: 6px;
     transition: var(--transition);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
 }
 
 .service-card-new:hover .service-icon-badge {
@@ -982,16 +986,25 @@ body.menu-open::before {
 }
 
 .service-card-overlay h3 {
-    font-size: 1.6rem;
-    margin-bottom: 10px;
+    font-size: clamp(1.5rem, 2.1vw, 1.95rem);
+    margin-bottom: 0;
     color: var(--white);
+    line-height: 1.12;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
 }
 
 .service-card-overlay p {
-    font-size: 0.95rem;
+    font-size: 1rem;
     opacity: 0.85;
-    line-height: 1.6;
-    margin-bottom: 15px;
+    line-height: 1.45;
+    margin-bottom: 4px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
 }
 
 .service-card-overlay .card-link {
@@ -2644,6 +2657,12 @@ body.menu-open::before {
     .service-line-block { padding: 20px; }
     .service-line-head h3 { font-size: 1.45rem; }
     .service-card-new { aspect-ratio: 16/12; }
+    .service-card-overlay { padding: 20px; }
+    .service-card-overlay h3 { font-size: 1.95rem; }
+    .service-card-overlay p {
+        font-size: 1.03rem;
+        -webkit-line-clamp: 4;
+    }
     .work-gallery-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 12px;

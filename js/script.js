@@ -5,6 +5,27 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    const PRIVATE_MODE_ENABLED = true;
+
+    if (PRIVATE_MODE_ENABLED) {
+        document.body.classList.add('private-mode');
+        document.documentElement.style.overflow = 'hidden';
+
+        const privateOverlay = document.createElement('div');
+        privateOverlay.className = 'private-mode-overlay';
+        privateOverlay.setAttribute('role', 'dialog');
+        privateOverlay.setAttribute('aria-modal', 'true');
+        privateOverlay.setAttribute('aria-label', 'Sitio en modo privado');
+        privateOverlay.innerHTML = `
+            <div class="private-mode-card">
+                <span class="private-mode-pill"><i class="fas fa-lock"></i> Modo privado</span>
+                <h2>Sitio temporalmente privado</h2>
+                <p>El contenido está protegido y no está disponible para navegación pública en este momento.</p>
+            </div>
+        `;
+        document.body.appendChild(privateOverlay);
+    }
+
     document.body.classList.add('page-ready');
 
     // === Global UX Enhancements (lightweight) ===
